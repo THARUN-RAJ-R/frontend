@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            form{
+                display: inline-block;
+                text-align: center;
+                background-color: black;
+                padding: 10px;
+                margin: 10% 30% 70% 30%;
+                width: 400px;
+                border-radius: 60px;
+                height: 500px;
+            }
+            .cal{
+                background-color: white;
+                text-align: center;
+            }
+            table
+            {
+                width: 400px;
+                height: 500px;
+                font-size: larger;
+                color: white;
+                padding: 10px;
+                border-spacing: 10px;
+            }
+            tr{
+                padding: 10px;
+            }
+            
+            td{
+                background-color: grey;
+                border-radius: 100%;
+                width: 10%;
+                height: 10%;
+                padding: 20px; 
+                text-align: center; 
+                cursor: pointer;
+            }
+            .res{
+                border-radius: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="cal">
+            <form>
+                <table >
+                    <tr>
+                        <td class="res" colspan="4">result</td>
+                    </tr>
+                    <tr>
+                        <td onclick="change('1')">1</td>
+                        <td onclick="change('2')">2</td>
+                        <td onclick="change('3')">3</td>
+                        <td>+</td>
+                    </tr>
+                    <tr>
+                        <td onclick="change()">4</td>
+                        <td onclick="change()">5</td>
+                        <td onclick="change()">6</td>
+                        <td >-</td>
+                    </tr>
+                    <tr>
+                        <td onclick="change()">7</td>
+                        <td onclick="change()">8</td>
+                        <td onclick="change()">9</td>
+                        <td onclick="change()">*</td>
+                    </tr>
+                    <tr>
+                        <td onclick="change()">0</td>
+                        <td >/</td>
+                        <td class="res" colspan="2">=</td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <script>
+            function change()
+            {
+                
+            }
+        </script>
+</body>
+</html>

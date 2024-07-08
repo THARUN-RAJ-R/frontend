@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Chooser Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .color-picker {
+            display: none;
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 10px;
+            z-index: 1000;
+        }
+        .color-picker table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .color-picker td {
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Color Chooser Form</h1>
+    <form id="colorForm">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+        </div>
+        <div class="form-group">
+            <label for="favColor">Favorite Color:</label>
+            <input type="text" id="favColor" name="favColor" readonly onclick="toggleColorPicker()">
+            <div id="colorPicker" class="color-picker">
+                <table>
+                    <tr>
+                        <td style="background-color: #FF0000;" onclick="selectColor('#FF0000')"></td>
+                        <td style="background-color: #00FF00;" onclick="selectColor('#00FF00')"></td>
+                        <td style="background-color: #0000FF;" onclick="selectColor('#0000FF')"></td>
+                        <td style="background-color: #FFFF00;" onclick="selectColor('#FFFF00')"></td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #FF00FF;" onclick="selectColor('#FF00FF')"></td>
+                        <td style="background-color: #00FFFF;" onclick="selectColor('#00FFFF')"></td>
+                        <td style="background-color: #FFA500;" onclick="selectColor('#FFA500')"></td>
+                        <td style="background-color: #800080;" onclick="selectColor('#800080')"></td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #A52A2A;" onclick="selectColor('#A52A2A')"></td>
+                        <td style="background-color: #FFC0CB;" onclick="selectColor('#FFC0CB')"></td>
+                        <td style="background-color: #008080;" onclick="selectColor('#008080')"></td>
+                        <td style="background-color: #FFD700;" onclick="selectColor('#FFD700')"></td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #808080;" onclick="selectColor('#808080')"></td>
+                        <td style="background-color: #000000;" onclick="selectColor('#000000')"></td>
+                        <td style="background-color: #FFFFFF;" onclick="selectColor('#FFFFFF')"></td>
+                        <td style="background-color: #00FF00;" onclick="selectColor('#00FF00')"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        var colorPicker = document.getElementById('colorPicker');
+        var favColorInput = document.getElementById('favColor');
+
+        function toggleColorPicker() {
+            if (colorPicker.style.display === 'none' || colorPicker.style.display === '') {
+                colorPicker.style.display = 'block';
+                document.addEventListener('click', closeColorPickerOutsideClick);
+                document.addEventListener('keydown', closeColorPickerOnEsc);
+                window.addEventListener('resize', positionColorPicker);
+                positionColorPicker();
+            } else {
+                colorPicker.style.display = 'none';
+                document.removeEventListener('click', closeColorPickerOutsideClick);
+                document.removeEventListener('keydown', closeColorPickerOnEsc);
+                window.removeEventListener('resize', positionColorPicker);
+            }
+        }
+
+        function selectColor(color) {
+            favColorInput.value = color;
+            toggleColorPicker();
+        }
+
+        function closeColorPickerOutsideClick(event) {
+            if (!colorPicker.contains(event.target) && event.target !== favColorInput) {
+                toggleColorPicker();
+            }
+        }
+
+        function closeColorPickerOnEsc(event) {
+            if (event.key === 'Escape') {
+                toggleColorPicker();
+            }
+        }
+
+        function positionColorPicker() {
+            var rect = favColorInput.getBoundingClientRect();
+            colorPicker.style.top = rect.bottom + 10 + 'px';
+            colorPicker.style.left = rect.left + (rect.width / 2) - (colorPicker.offsetWidth / 2) + 'px';
+        }
+    </script>
+</body>
+</html>

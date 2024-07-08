@@ -1,0 +1,52 @@
+body{
+    background-color: blanchedalmond;
+    margin: 10px;
+}
+h1{
+    text-align: center;
+}
+
+.aa{
+    background-color: black;
+    color:white;
+    padding: 20px;
+}
+
+h3{
+    display: inline-block;
+    width: 65%;
+}
+
+li,ol,ul{
+    display: inline-block;
+    color: #8a8585;
+    padding: 20px;
+}
+
+li:hover {
+    font-size: larger;
+    color: white;
+    cursor: pointer;
+}
+
+.left-section {
+    display: inline-block;
+    width: 40%; 
+    height: auto;  
+    background-color: #8a8585; 
+    border: 1px solid   #860a0a;
+    border-radius: 10px;    
+    border-top-width: 30px;
+    padding: 20px 10px 40px 80px;
+    left : 0    ;
+}
+
+.right-section {
+    display: inline-block;
+    text-align: right;
+    width: 52.7%; 
+    height: auto;  
+    background-color: #e0e0e0; 
+    position: absolute;
+    right: 0; 
+}
